@@ -12,27 +12,27 @@ public class Node {
     String id;
 
     @XmlAttribute()
-    @JsonProperty("preferredLabel")
-    String preferredLabel;
+    @JsonProperty("prefLabel")
+    String prefLabel;
 
     @XmlAttribute()
-    @JsonProperty("label")
-    String label;
+    @JsonProperty("altLabel")
+    String altLabel;
 
     @XmlAttribute()
-    @JsonProperty("preferredLabelTree")
-    String preferredLabelTree;
+    @JsonProperty("prefLabelTree")
+    String prefLabelTree;
 
 
     public Node() {
 
     }
 
-    public Node(String id, String preferredLabel, String label, String preferredLabelTree) {
+    public Node(String id, String preferredLabel, String label, String prefLabelTree) {
         this.id = id;
-        this.preferredLabel = preferredLabel;
-        this.label = label;
-        this.preferredLabelTree = preferredLabelTree;
+        this.prefLabel = preferredLabel;
+        this.altLabel = label;
+        this.prefLabelTree = prefLabelTree;
     }
 
 }

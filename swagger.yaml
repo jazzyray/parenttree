@@ -78,15 +78,15 @@ definitions:
         type: "string"
         xml:
           attribute: true
-      preferredLabel:
+      prefLabel:
         type: "string"
         xml:
           attribute: true
-      label:
+      altLabel:
         type: "string"
         xml:
           attribute: true
-      preferredLabelTree:
+      prefLabelTree:
         type: "string"
         xml:
           attribute: true

@@ -1,47 +1,38 @@
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.ontotext.com/parenttree/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:element name="parenttree">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="tree" maxOccurs="1" minOccurs="1">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="leaf" maxOccurs="unbounded" minOccurs="0">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="children" maxOccurs="unbounded" minOccurs="0">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                    <xs:element name="leaf" maxOccurs="unbounded" minOccurs="0">
-                                                    </xs:element>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                    <xs:attribute type="xs:anyURI" name="id" use="required"/>
-                                </xs:complexType>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="nodes" maxOccurs="1" minOccurs="1">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="node" maxOccurs="unbounded" minOccurs="0">
-                                <xs:complexType>
-                                    <xs:simpleContent>
-                                        <xs:extension base="xs:string">
-                                            <xs:attribute type="xs:anyURI" name="id" use="required"/>
-                                            <xs:attribute type="xs:string" name="preferredLabel" use="required"/>
-                                            <xs:attribute type="xs:string" name="label" use="optional"/>
-                                            <xs:attribute type="xs:string" name="preferredLabelTree" use="required"/>
-                                        </xs:extension>
-                                    </xs:simpleContent>
-                                </xs:complexType>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+    <xs:element name="parenttree" type="par:parenttreeType" xmlns:par="http://www.ontotext.com/parenttree/"/>
+    <xs:complexType name="leafType" mixed="true">
+        <xs:sequence>
+            <xs:element type="par:childrenType" name="children" minOccurs="0" xmlns:par="http://www.ontotext.com/parenttree/"/>
+        </xs:sequence>
+        <xs:attribute type="xs:anyURI" name="id" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="childrenType">
+        <xs:sequence>
+            <xs:element type="par:leafType" name="leaf" maxOccurs="unbounded" minOccurs="0" xmlns:par="http://www.ontotext.com/parenttree/"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="treeType">
+        <xs:sequence>
+            <xs:element type="par:leafType" name="leaf" xmlns:par="http://www.ontotext.com/parenttree/"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="nodeType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="altLabel"/>
+        </xs:sequence>
+        <xs:attribute type="xs:anyURI" name="id" use="required"/>
+        <xs:attribute type="xs:string" name="prefLabel" use="required"/>
+        <xs:attribute type="xs:string" name="prefLabelTree" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="nodesType">
+        <xs:sequence>
+            <xs:element type="par:nodeType" name="node" maxOccurs="unbounded" minOccurs="0" xmlns:par="http://www.ontotext.com/parenttree/"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="parenttreeType">
+        <xs:sequence>
+            <xs:element type="par:treeType" name="tree" xmlns:par="http://www.ontotext.com/parenttree/"/>
+            <xs:element type="par:nodesType" name="nodes" xmlns:par="http://www.ontotext.com/parenttree/"/>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>
