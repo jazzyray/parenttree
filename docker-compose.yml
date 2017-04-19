@@ -1,0 +1,5 @@
+annotation:
+  image: quay.io/ontotext/parent-tree
+  ports:
+  - "9105:9105"
+  - "9106:9106"

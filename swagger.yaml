@@ -1,0 +1,65 @@
+---
+swagger: "2.0"
+info:
+  description: "Parent Tree API. For retreiving the parent tree for a set of concepts"
+  version: "v0.0.1"
+  title: "Parent Tree API"
+  termsOfService: "http://www.yourterms.com"
+  contact:
+    name: "Jem Rayfield"
+    url: "http://ontotext.com"
+    email: "jem.rayfield@ontotext.com"
+host: "localhost:9105"
+basePath: "/parenttree"
+tags:
+- name: "Parent Tree API"
+schemes:
+- "http"
+- "https"
+paths:
+  /parenttree:
+    get:
+      tags:
+      - "Parent Tree API"
+      summary: "Get Parent Tree for a set of concepts"
+      description: ""
+      operationId: "getAnnotatedContent"
+      parameters:
+      - name: "conceptId"
+        in: "query"
+        description: "Concept Ids"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+      - name: "X-Request-ID"
+        in: "header"
+        description: "Transaction Id"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Tree"
+          headers:
+            X-Cache:
+              type: "boolean"
+              description: "Explains whether or not a cache was used"
+            ETag:
+              type: "string"
+              description: "Annotated Content ETag for cache control"
+            Vary:
+              type: "string"
+              description: "Make sure proxies cache by Vary"
+            Allow:
+              type: "string"
+              description: "CORS Allowed Methods"
+        400:
+          description: "Invalid Concept Ids supplied"
+        404:
+          description: "Concept Ids not found"
+definitions:
+  Tree:
+    type: "object"

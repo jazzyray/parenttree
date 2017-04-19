@@ -1,0 +1,13 @@
+server:
+  adminMinThreads: 1
+  adminMaxThreads: 64
+  adminContextPath: /
+  applicationContextPath: /
+  applicationConnectors:
+    - type: http
+      port: 9105
+  adminConnectors:
+    - type: http
+      port: 9106
+swagger:
+  resourcePackage: com.ontotext.parenttree.resource
