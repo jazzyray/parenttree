@@ -1,0 +1,50 @@
+{
+  "tree": {
+    "leaf": {
+      "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn1c"
+    },
+    "children": [
+      {
+        "leaf": {
+          "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn2c"
+        },
+        "children": [
+          {
+            "leaf": {
+              "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn4c"
+            },
+            "children": null
+          }
+        ]
+      },
+      {
+        "leaf": {
+          "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn3c"
+        },
+        "children": null
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn1c",
+      "preferredLabel": "Well drilling",
+      "label": "well-drilling"
+    },
+    {
+      "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn2c",
+      "preferredLabel": "Well planning",
+      "label": "well-planning"
+    },
+    {
+      "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn3c",
+      "preferredLabel": "Well site preparation",
+      "label": "well-site-preparation"
+    },
+    {
+      "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn4c",
+      "preferredLabel": "Wellbore design",
+      "label": "well-bore-design"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+<pt:parenttree xmlns:pt="http://www.ontotext.com/parenttree/">
+    <pt:tree>
+        <pt:leaf id="http://ontology.ontotext.com/resource/tsk9f4r0xn1c">
+            <pt:children>
+                <pt:leaf id="http://ontology.ontotext.com/resource/tsk9f4r0xn2c">
+                    <pt:children>
+                        <pt:leaf id="http://ontology.ontotext.com/resource/tsk9f4r0xn4c"/>
+                    </pt:children>
+                </pt:leaf>
+                <pt:leaf id="http://ontology.ontotext.com/resource/tsk9f4r0xn3c"/>
+            </pt:children>
+        </pt:leaf>
+    </pt:tree>
+    <pt:nodes>
+        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn1c" preferredLabel="Well drilling" label="well-drilling"/>
+        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn2c" preferredLabel="Well planning" label="well-planning"/>
+        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn3c" preferredLabel="Well site preparation" label="well-site-preparation"/>
+        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn4c" preferredLabel="Wellbore design" label="well-bore-design"/>
+    </pt:nodes>
+</pt:parenttree>

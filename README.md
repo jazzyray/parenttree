@@ -15,6 +15,28 @@ docker-compose up -d
 http://localhost:9105/swagger
 ```
 
+## Curl Requests
+
+### JSON
+``` 
+curl -X GET --header 'Accept: application/vnd.ontotext.parenttree+json' --header 'X-Request-ID: 123123' 'http://localhost:9105/parenttree?conceptId=http%3A%2F%2Fontology.ontotext.com%2Fresource%2Ftsk9f4r0xn3c&conceptId=http%3A%2F%2Fontology.ontotext.com%2Fresource%2Ftsk9f4r0xn4c'
+```
+
+#### Response
+```
+ { "tree": { "leaf": { "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn1c" }, "children": [ { "leaf": { "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn2c" }, "children": [ { "leaf": { "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn4c" }, "children": null } ] }, { "leaf": { "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn3c" }, "children": null } ] }, "nodes": [ { "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn1c", "preferredLabel": "Well drilling", "label": "well-drilling" }, { "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn2c", "preferredLabel": "Well planning", "label": "well-planning" }, { "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn3c", "preferredLabel": "Well site preparation", "label": "well-site-preparation" }, { "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn4c", "preferredLabel": "Wellbore design", "label": "well-bore-design" } ] }
+```
+
+### XML
+
+``` 
+curl -X GET --header 'Accept: application/vnd.ontotext.parenttree+xml' --header 'X-Request-ID: 123123' 'http://localhost:9105/parenttree?conceptId=http%3A%2F%2Fontology.ontotext.com%2Fresource%2Ftsk9f4r0xn3c&conceptId=http%3A%2F%2Fontology.ontotext.com%2Fresource%2Ftsk9f4r0xn4c'
+```
+
+#### Response
+``` 
+curl -X GET --header 'Accept: application/vnd.ontotext.parenttree+xml' --header 'X-Request-ID: 123123' 'http://localhost:9105/parenttree?conceptId=http%3A%2F%2Fontology.ontotext.com%2Fresource%2Ftsk9f4r0xn3c&conceptId=http%3A%2F%2Fontology.ontotext.com%2Fresource%2Ftsk9f4r0xn4c'
+```
 # Integration Tests
 
 ## Running Integration Test

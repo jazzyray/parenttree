@@ -23,7 +23,10 @@ paths:
       - "Parent Tree API"
       summary: "Get Parent Tree for a set of concepts"
       description: ""
-      operationId: "getAnnotatedContent"
+      operationId: "getParentTree"
+      produces:
+      - "application/vnd.ontotext.parenttree+json; charset=utf-8"
+      - "application/vnd.ontotext.parenttree+xml; charset=utf-8"
       parameters:
       - name: "conceptId"
         in: "query"
@@ -42,14 +45,14 @@ paths:
         200:
           description: "Success"
           schema:
-            $ref: "#/definitions/Tree"
+            $ref: "#/definitions/ParentTree"
           headers:
             X-Cache:
               type: "boolean"
               description: "Explains whether or not a cache was used"
             ETag:
               type: "string"
-              description: "Annotated Content ETag for cache control"
+              description: "Parent Tree ETag for cache control"
             Vary:
               type: "string"
               description: "Make sure proxies cache by Vary"
@@ -61,5 +64,56 @@ paths:
         404:
           description: "Concept Ids not found"
 definitions:
+  Leaf:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        xml:
+          attribute: true
+  Node:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        xml:
+          attribute: true
+      preferredLabel:
+        type: "string"
+        xml:
+          attribute: true
+      label:
+        type: "string"
+        xml:
+          attribute: true
+  ParentTree:
+    type: "object"
+    properties:
+      tree:
+        xml:
+          namespace: "http://www.ontotext.com/parenttree/"
+        $ref: "#/definitions/Tree"
+      nodes:
+        type: "array"
+        xml:
+          name: "node"
+          namespace: "http://www.ontotext.com/parenttree/"
+          wrapped: true
+        items:
+          $ref: "#/definitions/Node"
+    xml:
+      name: "parenttree"
+      namespace: "http://www.ontotext.com/parenttree/"
   Tree:
     type: "object"
+    properties:
+      leaf:
+        xml:
+          namespace: "http://www.ontotext.com/parenttree/"
+        $ref: "#/definitions/Leaf"
+      children:
+        type: "array"
+        xml:
+          namespace: "http://www.ontotext.com/parenttree/"
+        items:
+          $ref: "#/definitions/Tree"
