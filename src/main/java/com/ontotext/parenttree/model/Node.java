@@ -19,14 +19,20 @@ public class Node {
     @JsonProperty("label")
     String label;
 
+    @XmlAttribute()
+    @JsonProperty("preferredLabelTree")
+    String preferredLabelTree;
+
+
     public Node() {
 
     }
 
-    public Node(String id, String preferredLabel, String label) {
+    public Node(String id, String preferredLabel, String label, String preferredLabelTree) {
         this.id = id;
         this.preferredLabel = preferredLabel;
         this.label = label;
+        this.preferredLabelTree = preferredLabelTree;
     }
 
 }

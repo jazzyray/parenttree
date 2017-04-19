@@ -12,9 +12,9 @@
         </pt:leaf>
     </pt:tree>
     <pt:nodes>
-        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn1c" preferredLabel="Well drilling" label="well-drilling"/>
-        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn2c" preferredLabel="Well planning" label="well-planning"/>
-        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn3c" preferredLabel="Well site preparation" label="well-site-preparation"/>
-        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn4c" preferredLabel="Wellbore design" label="well-bore-design"/>
+        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn1c" preferredLabel="Well drilling" label="well-drilling" preferredLabelTree="/Well drilling"/>
+        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn2c" preferredLabel="Well planning" label="well-planning" preferredLabelTree="/Well drilling/Well planning"/>
+        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn3c" preferredLabel="Well site preparation" label="well-site-preparation" preferredLabelTree="/Well drilling/Well site preparation"/>
+        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn4c" preferredLabel="Wellbore design" label="well-bore-design" preferredLabelTree="/Well drilling/Well planning/Wellbore design"/>
     </pt:nodes>
 </pt:parenttree>

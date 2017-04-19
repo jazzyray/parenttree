@@ -14,10 +14,10 @@ abstract public class AbstractTreeSerialisationTest {
 
     public void setUp() {
         List<Node> nodes = new ArrayList<Node>();
-        nodes.add(new Node(ParentTreeService.ID_ONE, "Well drilling", "well-drilling"));
-        nodes.add(new Node(ParentTreeService.ID_TWO, "Well planning", "well-planning"));
-        nodes.add(new Node(ParentTreeService.ID_THREE, "Well site preparation", "well-site-preparation"));
-        nodes.add(new Node(ParentTreeService.ID_FOUR, "Wellbore design", "Wellbore design"));
+        nodes.add(new Node(ParentTreeService.ID_ONE, "Well drilling", "well-drilling", "/Well drilling"));
+        nodes.add(new Node(ParentTreeService.ID_TWO, "Well planning", "well-planning", "/Well drilling/Well planning"));
+        nodes.add(new Node(ParentTreeService.ID_THREE, "Well site preparation", "well-site-preparation", "/Well drilling/Well site preparation"));
+        nodes.add(new Node(ParentTreeService.ID_FOUR, "Wellbore design", "Wellbore design", "/Well drilling/Well planning/Wellbore design"));
 
         Tree threeTree = new Tree(new Leaf(ParentTreeService.ID_THREE));
 
