@@ -11,7 +11,6 @@ abstract public class AbstractTreeSerialisationTest {
 
     ParentTree parentTree;
 
-
     public void setUp() {
         List<Node> nodes = new ArrayList<Node>();
         nodes.add(new Node(ParentTreeService.ID_ONE, "Well drilling", "well-drilling", "/Well drilling"));

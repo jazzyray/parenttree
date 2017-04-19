@@ -86,6 +86,10 @@ definitions:
         type: "string"
         xml:
           attribute: true
+      preferredLabelTree:
+        type: "string"
+        xml:
+          attribute: true
   ParentTree:
     type: "object"
     properties:
