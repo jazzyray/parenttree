@@ -3,6 +3,8 @@ package com.ontotext.parenttree.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.xml.bind.annotation.XmlAttribute;
+import java.util.ArrayList;
+import java.util.List;
 
 /** **/
 public class Node {
@@ -17,7 +19,7 @@ public class Node {
 
     @XmlAttribute()
     @JsonProperty("altLabel")
-    String altLabel;
+    List<String> altLabel;
 
     @XmlAttribute()
     @JsonProperty("prefLabelTree")
@@ -31,7 +33,8 @@ public class Node {
     public Node(String id, String preferredLabel, String label, String prefLabelTree) {
         this.id = id;
         this.prefLabel = preferredLabel;
-        this.altLabel = label;
+        this.altLabel = new ArrayList<String>();
+        altLabel.add(label);
         this.prefLabelTree = prefLabelTree;
     }
 

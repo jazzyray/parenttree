@@ -1,19 +1,20 @@
 <pt:parenttree xmlns:pt="http://www.ontotext.com/parenttree/">
     <pt:tree>
-        <pt:leaf id="http://ontology.ontotext.com/resource/tsk9f4r0xn1c">
+        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn1c">
             <pt:children>
-                <pt:leaf id="http://ontology.ontotext.com/resource/tsk9f4r0xn2c">
+                <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn2c">
                     <pt:children>
-                        <pt:leaf id="http://ontology.ontotext.com/resource/tsk9f4r0xn4c"/>
+                        <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn4c"/>
                     </pt:children>
-                </pt:leaf>
-                <pt:leaf id="http://ontology.ontotext.com/resource/tsk9f4r0xn3c"/>
+                </pt:node>
+                <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn3c"/>
             </pt:children>
-        </pt:leaf>
+        </pt:node>
     </pt:tree>
     <pt:nodes>
         <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn1c" prefLabel="Well drilling" prefLabelTree="/Well drilling">
             <pt:altLabel>well-drilling</pt:altLabel>
+            <pt:altLabel>well-drillings</pt:altLabel>
         </pt:node>
         <pt:node id="http://ontology.ontotext.com/resource/tsk9f4r0xn2c" prefLabel="Well planning" prefLabelTree="/Well drilling/Well planning">
             <pt:altLabel>well-planning</pt:altLabel>

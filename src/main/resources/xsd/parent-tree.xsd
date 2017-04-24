@@ -8,12 +8,12 @@
     </xs:complexType>
     <xs:complexType name="childrenType">
         <xs:sequence>
-            <xs:element type="par:leafType" name="leaf" maxOccurs="unbounded" minOccurs="0" xmlns:par="http://www.ontotext.com/parenttree/"/>
+            <xs:element type="par:leafType" name="node" maxOccurs="unbounded" minOccurs="0" xmlns:par="http://www.ontotext.com/parenttree/"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="treeType">
         <xs:sequence>
-            <xs:element type="par:leafType" name="leaf" xmlns:par="http://www.ontotext.com/parenttree/"/>
+            <xs:element type="par:leafType" name="node" xmlns:par="http://www.ontotext.com/parenttree/"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="nodeType">

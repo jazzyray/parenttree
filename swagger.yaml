@@ -64,13 +64,6 @@ paths:
         404:
           description: "Concept Ids not found"
 definitions:
-  Leaf:
-    type: "object"
-    properties:
-      id:
-        type: "string"
-        xml:
-          attribute: true
   Node:
     type: "object"
     properties:
@@ -111,13 +104,20 @@ definitions:
   Tree:
     type: "object"
     properties:
-      leaf:
+      node:
         xml:
           namespace: "http://www.ontotext.com/parenttree/"
-        $ref: "#/definitions/Leaf"
+        $ref: "#/definitions/TreeNode"
       children:
         type: "array"
         xml:
           namespace: "http://www.ontotext.com/parenttree/"
         items:
           $ref: "#/definitions/Tree"
+  TreeNode:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        xml:
+          attribute: true
