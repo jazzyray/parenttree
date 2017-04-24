@@ -1,18 +1,20 @@
 PREFIX ontores: <http://ontology.ontotext.com/resource/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-CONSTRUCT {
-	{{concept}} skos:altLabel ?altLabel ;
+construct {
+	?concept skos:altLabel ?altLabel ;
         			     skos:prefLabel ?prefLabel ;
         				 skos:broader ?immediateBroader .
     ?transitiveBroader  skos:broader ?broader ;
                         skos:altLabel ?broaderAltLabel ;
                         skos:prefLabel ?broaderPrefLabel .
-} WHERE {
-    OPTIONAL { {{concept}} skos:broader ?immediateBroader .}
-    {{concept}} skos:altLabel ?altLabel ;
-                skos:prefLabel ?prefLabel .
-	OPTIONAL { {{concept}} skos:broader+ ?transitiveBroader .
+} where {
+    OPTIONAL { ?concept skos:broader ?immediateBroader .}
+    ?concept skos:altLabel ?altLabel ;
+                         skos:prefLabel ?prefLabel .
+	OPTIONAL { ?concept skos:broader+ ?transitiveBroader .
     	OPTIONAL { ?transitiveBroader skos:broader ?broader } .
     	OPTIONAL { ?transitiveBroader skos:altLabel ?broaderAltLabel } .
-        OPTIONAL { ?transitiveBroader skos:prefLabel ?broaderPrefLabel }}
+        OPTIONAL { ?transitiveBroader skos:prefLabel ?broaderPrefLabel }} .
+    FILTER {{conceptFilter}}
+    # FILTER ( ?concept = ontores:tsk9f4r0xn4c || ?concept = ontores:tsk9f4r0xn3c)
 }
