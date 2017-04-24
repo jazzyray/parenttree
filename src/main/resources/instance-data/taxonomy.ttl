@@ -1,0 +1,21 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ontores: <http://ontology.ontotext.com/resource/> .
+
+ontores:tsk9f4r0xn1c rdf:type skos:Concept ;
+    skos:prefLabel "Well drilling"@en ;
+    skos:altLabel "well-drilling"@en .
+
+ontores:tsk9f4r0xn2c rdf:type skos:Concept ;
+    skos:prefLabel "Well planning"@en ;
+    skos:altLabel "well-planning"@en ;
+    skos:broader ontores:tsk9f4r0xn1c .
+
+ontores:tsk9f4r0xn3c rdf:type skos:Concept ;
+    skos:prefLabel "Well site preparation"@en ;
+    skos:altLabel "well-site-preparation"@en ;
+    skos:broader ontores:tsk9f4r0xn1c .
+
+ontores:tsk9f4r0xn4c rdf:type skos:Concept ;
+    skos:prefLabel "Wellbore design"@en ;
+    skos:altLabel "well-bore-design"@en ;
+    skos:broader ontores:tsk9f4r0xn2c .
