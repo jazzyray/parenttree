@@ -29,26 +29,26 @@
     {
       "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn1c",
       "prefLabel": "Well drilling",
-      "altLabel": ["well-drilling"],
-      "prefLabelTree": "/Well drilling"
+      "altLabels": ["well-drilling"],
+      "prefLabelTrees": ["/Well drilling"]
     },
     {
       "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn2c",
       "prefLabel": "Well planning",
-      "altLabel": ["well-planning"],
-      "prefLabelTree": "/Well drilling/Well planning"
+      "altLabels": ["well-planning"],
+      "prefLabelTrees": ["/Well drilling/Well planning"]
     },
     {
       "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn3c",
       "prefLabel": "Well site preparation",
-      "altLabel": ["well-site-preparation"],
-      "prefLabelTree": "/Well drilling/Well site preparation"
+      "altLabels": ["well-site-preparation"],
+      "prefLabelTrees": ["/Well drilling/Well site preparation"]
     },
     {
       "id": "http://ontology.ontotext.com/resource/tsk9f4r0xn4c",
       "prefLabel": "Wellbore design",
-      "altLabel": ["well-bore-design"],
-      "prefLabelTree": "/Well drilling/Well planning/Wellbore design"
+      "altLabels": ["well-bore-design"],
+      "prefLabelTrees": ["/Well drilling/Well planning/Wellbore design"]
     }
   ]
 }

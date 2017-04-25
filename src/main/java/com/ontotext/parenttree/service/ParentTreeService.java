@@ -9,6 +9,7 @@ import com.ontotext.parenttree.sesamerepo.SesameRepo;
 import org.eclipse.rdf4j.model.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -73,10 +74,21 @@ public class ParentTreeService {
             treeNode.setId(root.subjects().iterator().next().toString());
             Model rootPrefLabel = model.filter(valueFactory.createIRI(treeNode.getId()), SKOS.PREF_LABEL, null );
             String prefLabel = rootPrefLabel.objects().iterator().next().stringValue();
-            treeNode.setPrefLabelTree("/" + prefLabel);
+            treeNode.setPrefLabelTrees(Arrays.asList("/" + prefLabel));
             treeNode.setPrefLabel(prefLabel);
             treeNode.setAltLabel(getAltLabels(treeNode.getId(), model));
             return treeNode;
+        }
+    }
+
+    public void addToNodes(List<Node> nodes, Node node) {
+        List<Node> result = nodes.stream()
+                .filter(item -> item.getId().equals(node.getId()))
+                .collect(Collectors.toList());
+        if (result.size()>0) {
+            result.get(0).getPrefLabelTrees().add(node.getPrefLabelTrees().get(0));
+        } else {
+            nodes.add(node);
         }
     }
 
@@ -89,14 +101,14 @@ public class ParentTreeService {
                     childTreeNode.setId(childId.get().stringValue());
                     Optional<Literal> childPrefLabel = Models.objectLiteral(model.filter(child, SKOS.PREF_LABEL, null));
                     if (childPrefLabel.isPresent()) {
-                        childTreeNode.setPrefLabelTree(treeNode.getPrefLabelTree() + "/" + childPrefLabel.get().stringValue());
+                        childTreeNode.setPrefLabelTrees(Arrays.asList(treeNode.getPrefLabelTrees().get(0) + "/" + childPrefLabel.get().stringValue()));
+                        childTreeNode.setPrefLabel(childPrefLabel.get().stringValue());
                     }
-                    childTreeNode.setPrefLabel(treeNode.getPrefLabelTree());
                     childTreeNode.setAltLabel(getAltLabels(childTreeNode.getId(), model));
                     Tree childTree = new Tree(childTreeNode);
                     children.add(childTree);
                     childTree.children = getChildren(childTreeNode, model, nodes);
-                    nodes.add(childTreeNode.asNode());
+                    addToNodes(nodes, childTreeNode.asNode());
                 }
         }
         return children;

@@ -73,7 +73,7 @@ public class ParentTreeServiceTest {
     public void findRootNode() {
         TreeNode rootTreeNode = parentTreeService.findRootTreeNode(model);
         assertThat(rootTreeNode.getId()).isEqualTo(ID_ONE);
-        assertThat(rootTreeNode.getPrefLabelTree()).isEqualTo("/" + PREF_LABEL_ONE);
+        assertThat(rootTreeNode.getPrefLabelTrees().get(0)).isEqualTo("/" + PREF_LABEL_ONE);
     }
 
     @Test

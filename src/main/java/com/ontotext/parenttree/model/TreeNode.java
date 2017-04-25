@@ -18,7 +18,7 @@ public class TreeNode {
     private String id;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String prefLabelTree;
+    private List<String> prefLabelTrees;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<String> altLabel;
@@ -46,23 +46,23 @@ public class TreeNode {
         return this.altLabel;
     }
 
-    public String getPrefLabelTree() {
-        return this.prefLabelTree;
+    public List<String> getPrefLabelTrees() {
+        return this.prefLabelTrees;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setPrefLabelTree(String prefLabelTree) {
-        this.prefLabelTree = prefLabelTree;
+    public void setPrefLabelTrees(List<String> prefLabelTrees) {
+        this.prefLabelTrees = prefLabelTrees;
     }
 
     public void setAltLabel(List<String> altLabel) {
         this.altLabel = altLabel;
     }
 
-    public void setPrefLabel(String prefLabel) {
+    public void setPrefLabel (String prefLabel) {
         this.prefLabel = prefLabel;
     }
 
@@ -70,7 +70,7 @@ public class TreeNode {
         Node node = new Node();
         node.setId(this.id);
         node.setAltLabel(this.altLabel);
-        node.setPrefLabelTree(this.prefLabelTree);
+        node.setPrefLabelTrees(this.prefLabelTrees);
         node.setPrefLabel(this.prefLabel);
         return node;
     }

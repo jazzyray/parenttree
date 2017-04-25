@@ -21,12 +21,12 @@ public class Node {
     String prefLabel;
 
     @XmlAttribute()
-    @JsonProperty("altLabel")
+    @JsonProperty("altLabels")
     List<String> altLabel;
 
     @XmlAttribute()
-    @JsonProperty("prefLabelTree")
-    String prefLabelTree;
+    @JsonProperty("prefLabelTrees")
+    List<String> prefLabelTrees;
 
 
     public Node() {
@@ -38,7 +38,8 @@ public class Node {
         this.prefLabel = preferredLabel;
         this.altLabel = new ArrayList<String>();
         altLabel.add(label);
-        this.prefLabelTree = prefLabelTree;
+        this.prefLabelTrees = new ArrayList<String>();
+        this.prefLabelTrees.add(prefLabelTree);
     }
 
     public String getId() {
@@ -53,8 +54,8 @@ public class Node {
         return this.altLabel;
     }
 
-    public String getPrefLabelTree() {
-        return this.prefLabelTree;
+    public List<String> getPrefLabelTrees() {
+        return this.prefLabelTrees;
     }
 
     public void setId(String id) {
@@ -69,7 +70,9 @@ public class Node {
         this.altLabel = altLabel;
     }
 
-    public void setPrefLabelTree(String prefLabelTree) {
-        this.prefLabelTree = prefLabelTree;
+    public void setPrefLabelTrees(List<String> prefLabelTrees) {
+        this.prefLabelTrees = prefLabelTrees;
     }
+
+
 }
