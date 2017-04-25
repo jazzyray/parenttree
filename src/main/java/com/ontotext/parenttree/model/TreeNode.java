@@ -2,10 +2,10 @@ package com.ontotext.parenttree.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ontotext.docio.model.*;
+import com.ontotext.docio.model.Namespace;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
 /** **/
@@ -21,6 +21,8 @@ public class TreeNode {
     private List<String> prefLabelTrees;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @XmlElementWrapper(name = "altLabels")
+    @XmlElement(name = "altLabel")
     private List<String> altLabel;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

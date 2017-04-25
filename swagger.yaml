@@ -75,14 +75,14 @@ definitions:
         type: "string"
         xml:
           attribute: true
-      altLabel:
+      altLabels:
         type: "array"
         items:
           type: "string"
-      prefLabelTree:
-        type: "string"
-        xml:
-          attribute: true
+      prefLabelTrees:
+        type: "array"
+        items:
+          type: "string"
   ParentTree:
     type: "object"
     properties:
@@ -117,8 +117,10 @@ definitions:
   TreeNode:
     type: "object"
     properties:
-      prefLabelTree:
-        type: "string"
+      prefLabelTrees:
+        type: "array"
+        items:
+          type: "string"
       altLabel:
         type: "array"
         items:

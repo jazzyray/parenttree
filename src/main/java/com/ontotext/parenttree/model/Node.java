@@ -2,9 +2,7 @@ package com.ontotext.parenttree.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,11 +18,13 @@ public class Node {
     @JsonProperty("prefLabel")
     String prefLabel;
 
-    @XmlAttribute()
     @JsonProperty("altLabels")
+    @XmlElementWrapper(name = "altLabels", namespace = Namespace.DEFAULT_NAMESPACE)
+    @XmlElement(name = "altLabel", namespace = Namespace.DEFAULT_NAMESPACE)
     List<String> altLabel;
 
-    @XmlAttribute()
+    @XmlElementWrapper(name = "prefLabelTrees", namespace = Namespace.DEFAULT_NAMESPACE)
+    @XmlElement(name = "prefLabelTree", namespace = Namespace.DEFAULT_NAMESPACE)
     @JsonProperty("prefLabelTrees")
     List<String> prefLabelTrees;
 
