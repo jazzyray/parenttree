@@ -7,6 +7,12 @@ import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 /** **/
 public class ParentTreeConfiguration extends Configuration {
 
+    @JsonProperty
+    public String sesameRepoURL;
+
+    @JsonProperty
+    public String repoID;
+
     @JsonProperty("swagger")
     public SwaggerBundleConfiguration swaggerBundleConfiguration;
 

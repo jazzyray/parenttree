@@ -12,11 +12,11 @@ public class Tree {
 
     @XmlElement(name = "node", namespace = Namespace.DEFAULT_NAMESPACE)
     @JsonProperty("node")
-    TreeNode treeNode;
+    public TreeNode treeNode;
 
     @XmlElement(name = "children", namespace = Namespace.DEFAULT_NAMESPACE)
     @JsonProperty("children")
-    List<Tree> children;
+    public List<Tree> children;
 
     public Tree(TreeNode treeNode, List<Tree> children) {
         this.treeNode = treeNode;

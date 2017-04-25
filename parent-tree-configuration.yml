@@ -11,3 +11,5 @@ server:
       port: 9106
 swagger:
   resourcePackage: com.ontotext.parenttree.resource
+sesameRepoURL: http://localhost:7200
+repoID: parent-tree

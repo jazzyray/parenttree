@@ -1,12 +1,13 @@
 package com.ontotext.parenttree.sesamerepo;
 
 import com.ontotext.parenttree.exception.GraphDBRepositoryException;
-import org.openrdf.model.Model;
-import org.openrdf.query.*;
-import org.openrdf.repository.Repository;
-import org.openrdf.repository.RepositoryConnection;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.repository.http.HTTPRepository;
+import org.apache.http.protocol.HTTP;
+import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.query.*;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.repository.http.HTTPRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,9 +18,9 @@ public class SesameRepo {
 
     Repository repo;
 
-    public SesameRepo(String repoURL) {
+    public SesameRepo(String repoURL, String repositoryID) {
         try {
-            this.repo = new HTTPRepository(repoURL);
+            this.repo = new HTTPRepository(repoURL, repositoryID);
             repo.initialize();
         } catch (RepositoryException re) {
             throw new GraphDBRepositoryException(re);

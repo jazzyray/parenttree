@@ -1,11 +1,12 @@
 <http://ontology.ontotext.com/resource/tsk9f4r0xn3c> <http://www.w3.org/2004/02/skos/core#altLabel> "well-site-preparation"@en .
 <http://ontology.ontotext.com/resource/tsk9f4r0xn3c> <http://www.w3.org/2004/02/skos/core#prefLabel> "Well site preparation"@en .
 <http://ontology.ontotext.com/resource/tsk9f4r0xn3c> <http://www.w3.org/2004/02/skos/core#broader> <http://ontology.ontotext.com/resource/tsk9f4r0xn1c> .
+<http://ontology.ontotext.com/resource/tsk9f4r0xn1c> <http://www.w3.org/2004/02/skos/core#broader> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
 <http://ontology.ontotext.com/resource/tsk9f4r0xn1c> <http://www.w3.org/2004/02/skos/core#altLabel> "well-drilling"@en .
 <http://ontology.ontotext.com/resource/tsk9f4r0xn1c> <http://www.w3.org/2004/02/skos/core#prefLabel> "Well drilling"@en .
 <http://ontology.ontotext.com/resource/tsk9f4r0xn4c> <http://www.w3.org/2004/02/skos/core#altLabel> "well-bore-design"@en .
 <http://ontology.ontotext.com/resource/tsk9f4r0xn4c> <http://www.w3.org/2004/02/skos/core#prefLabel> "Wellbore design"@en .
 <http://ontology.ontotext.com/resource/tsk9f4r0xn4c> <http://www.w3.org/2004/02/skos/core#broader> <http://ontology.ontotext.com/resource/tsk9f4r0xn2c> .
-<http://ontology.ontotext.com/resource/tsk9f4r0xn2c> <http://www.w3.org/2004/02/skos/core#broader> <http://ontology.ontotext.com/resource/tsk9f4r0xn1c> .
 <http://ontology.ontotext.com/resource/tsk9f4r0xn2c> <http://www.w3.org/2004/02/skos/core#altLabel> "well-planning"@en .
 <http://ontology.ontotext.com/resource/tsk9f4r0xn2c> <http://www.w3.org/2004/02/skos/core#prefLabel> "Well planning"@en .
+<http://ontology.ontotext.com/resource/tsk9f4r0xn2c> <http://www.w3.org/2004/02/skos/core#broader> <http://ontology.ontotext.com/resource/tsk9f4r0xn1c> .

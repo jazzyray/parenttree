@@ -1,23 +1,23 @@
 package com.ontotext.parenttree.service;
 
 import com.ontotext.parenttree.model.ParentTree;
+import com.ontotext.parenttree.model.Tree;
+import com.ontotext.parenttree.model.TreeNode;
 import com.ontotext.parenttree.sesamerepo.SesameRepo;
+import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.impl.LinkedHashModel;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParser;
+import org.eclipse.rdf4j.rio.Rio;
+import org.eclipse.rdf4j.rio.helpers.StatementCollector;
 import org.junit.Before;
 import org.junit.Test;
-import org.openrdf.model.Model;
-import org.openrdf.model.impl.LinkedHashModel;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParser;
-import org.openrdf.rio.Rio;
-import org.openrdf.rio.helpers.StatementCollector;
 
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ontotext.parenttree.service.ParentTreeService.ID_FOUR;
-import static com.ontotext.parenttree.service.ParentTreeService.ID_THREE;
 import static com.ontotext.parenttree.util.ResourceUtil.getResourceFileAsStream;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -29,7 +29,14 @@ import static org.fest.assertions.Assertions.assertThat;
 /** **/
 public class ParentTreeServiceTest {
 
-    private Model model = mock(Model.class);
+    public static final String RESOURCE_PREFIX = "http://ontology.ontotext.com/resource/";
+    public static final String ID_ONE = RESOURCE_PREFIX + "tsk9f4r0xn1c";
+    public static final String ID_TWO = RESOURCE_PREFIX + "tsk9f4r0xn2c";
+    public static final String ID_THREE = RESOURCE_PREFIX + "tsk9f4r0xn3c";
+    public static final String ID_FOUR = RESOURCE_PREFIX + "tsk9f4r0xn4c";
+    public static final String PREF_LABEL_ONE = "Well drilling";
+
+    private Model model;
     private SesameRepo sesameRepo = mock(SesameRepo.class);
 
     private Model mockTaxonomyModel;
@@ -53,14 +60,26 @@ public class ParentTreeServiceTest {
         concepts = new ArrayList<String>();
         concepts.add(ID_THREE);
         concepts.add(ID_FOUR);
-
     }
 
     @Test
     public void readParentTree() throws Exception {
         ParentTree parentTree = parentTreeService.getParentTree(concepts);
+        assertThat(parentTree.getTree().treeNode.id).isEqualTo(ID_ONE);
+    }
 
-        assertThat(parentTree).isEqualTo(parentTreeService.MOCK_TREE);
+    @Test
+    public void findRootNode() {
+        TreeNode rootTreeNode = parentTreeService.findRootTreeNode(model);
+        assertThat(rootTreeNode.id).isEqualTo(ID_ONE);
+        assertThat(rootTreeNode.prefLabelTree).isEqualTo("/" + PREF_LABEL_ONE);
+    }
+
+    @Test
+    public void findChildren() {
+        TreeNode rootTreeNode = parentTreeService.findRootTreeNode(model);
+        List<Tree> children = parentTreeService.getChildren(rootTreeNode,model);
+        assertThat(children.size()).isEqualTo(2);
     }
 
 }

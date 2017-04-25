@@ -4,6 +4,7 @@ import com.ontotext.parenttree.configuration.ParentTreeConfiguration;
 import com.ontotext.parenttree.health.ParentTreeHealthCheck;
 import com.ontotext.parenttree.resource.ParentTreeResource;
 import com.ontotext.parenttree.service.ParentTreeService;
+import com.ontotext.parenttree.sesamerepo.SesameRepo;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -16,6 +17,7 @@ public class ParentTreeApplication  extends Application<ParentTreeConfiguration>
 
     @Override
     public void run(ParentTreeConfiguration parentTreeConfiguration, Environment environment) throws Exception {
+        this.parentTreeService = new ParentTreeService(new SesameRepo(parentTreeConfiguration.sesameRepoURL, parentTreeConfiguration.repoID));
 
         final ParentTreeResource resource = new ParentTreeResource(this.parentTreeService);
 
@@ -28,7 +30,6 @@ public class ParentTreeApplication  extends Application<ParentTreeConfiguration>
 
     @Override
     public void initialize(Bootstrap<ParentTreeConfiguration> bootstrap) {
-        this.parentTreeService = new ParentTreeService();
 
         bootstrap.addBundle(new SwaggerBundle<ParentTreeConfiguration>() {
             @Override

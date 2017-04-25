@@ -20,6 +20,10 @@ import static com.ontotext.parenttree.model.MediaType.*;
 @Path("/parenttree")
 public class ParentTreeResource {
 
+    public static final String RESOURCE_PREFIX = "http://ontology.ontotext.com/resource/";
+    public static final String ID_THREE = RESOURCE_PREFIX + "tsk9f4r0xn3c";
+    public static final String ID_FOUR = RESOURCE_PREFIX + "tsk9f4r0xn4c";
+
     ParentTreeService parentTreeService;
 
     public ParentTreeResource(ParentTreeService parentTreeService) {
@@ -43,8 +47,9 @@ public class ParentTreeResource {
     public Response getParentTree(@ApiParam(value = "Concept Ids", required = true) @QueryParam("conceptId") List<String> conceptIds,
                                   @ApiParam(value = "Transaction Id", required = false) @HeaderParam("X-Request-ID") String transactionId) {
 
-        if ((conceptIds.size() == 2) && ((conceptIds.contains(ParentTreeService.ID_THREE)) && (conceptIds.contains(ParentTreeService.ID_FOUR)))) {
-            return Response.status(HttpURLConnection.HTTP_OK).entity(parentTreeService.getParentTree(conceptIds)).build();
+        ParentTree parentTree = parentTreeService.getParentTree(conceptIds);
+        if (parentTree.getTree().treeNode != null) {
+            return Response.status(HttpURLConnection.HTTP_OK).entity(parentTree).build();
         } else {
             return Response.status(HttpURLConnection.HTTP_NOT_FOUND).build();
         }

@@ -76,9 +76,9 @@ definitions:
         xml:
           attribute: true
       altLabel:
-        type: "string"
-        xml:
-          attribute: true
+        type: "array"
+        items:
+          type: "string"
       prefLabelTree:
         type: "string"
         xml:

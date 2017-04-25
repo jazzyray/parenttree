@@ -1,21 +1,22 @@
 PREFIX ontores: <http://ontology.ontotext.com/resource/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-CONSTRUCT {
+construct {
 	?concept skos:altLabel ?altLabel ;
         			     skos:prefLabel ?prefLabel ;
         				 skos:broader ?immediateBroader .
     ?transitiveBroader  skos:broader ?broader ;
                         skos:altLabel ?broaderAltLabel ;
                         skos:prefLabel ?broaderPrefLabel .
-} WHERE {
-    OPTIONAL {
-        ?concept skos:broader       ?immediateBroader ;
-                 skos:altLabel      ?altLabel . }
-        ?concept skos:prefLabel     ?prefLabel .
-	OPTIONAL {
-	    ?concept skos:broader+ ?transitiveBroader .
-    	OPTIONAL { ?transitiveBroader skos:broader ?broader } .
+    ?transitiveBroader  skos:broader ?transitiveBroaderBroader .
+} where {
+    OPTIONAL { ?concept skos:broader ?immediateBroader .}
+    ?concept skos:altLabel ?altLabel ;
+                         skos:prefLabel ?prefLabel .
+	OPTIONAL { ?concept skos:broader+ ?transitiveBroader .
+        BIND(IF(EXISTS{?transitiveBroader skos:broader ?broad}, ?broad, false) AS ?broader) .
+    	OPTIONAL { ?transitiveBroader skos:broader ?broad } .
     	OPTIONAL { ?transitiveBroader skos:altLabel ?broaderAltLabel } .
-        OPTIONAL { ?transitiveBroader skos:prefLabel ?broaderPrefLabel }} .
-    FILTER {{conceptFilter}}
+        OPTIONAL { ?transitiveBroader skos:prefLabel ?broaderPrefLabel }
+    	OPTIONAL {?transitiveBroader skos:broader ?transitiveBroaderBroader .} } .
+     FILTER {{conceptFilter}}
 }
