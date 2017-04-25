@@ -32,7 +32,7 @@ import static org.mockito.Mockito.*;
 public class SesameRepoTest {
 
     private final String REPO = "parent-tree";
-    private final String SERVICE_URL = "http://localhost:7200/repository/";
+    private final String SERVICE_URL = "http://localhost:7200/repositories/";
 
     SesameRepo sesameRepo;
     private final Repository repository = mock(Repository.class);

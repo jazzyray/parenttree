@@ -9,12 +9,12 @@ RUN \
 
 WORKDIR data/parent-tree-api
 
-COPY start-mock.sh /data/parent-tree-api
+COPY start.sh /data/parent-tree-api
 COPY target/parent-tree-0.0.1-SNAPSHOT.jar /data/parent-tree-api/target
-COPY parent-tree-configuration-wiremock.yml /data/parent-tree-api
+COPY parent-tree-configuration.yml /data/parent-tree-api
 
 EXPOSE 9107
 EXPOSE 9108
 
 ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk
-CMD /data/parent-tree-api/start-mock.sh
+CMD /data/parent-tree-api/start.sh

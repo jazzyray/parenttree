@@ -117,6 +117,14 @@ definitions:
   TreeNode:
     type: "object"
     properties:
+      prefLabelTree:
+        type: "string"
+      altLabel:
+        type: "array"
+        items:
+          type: "string"
+      prefLabel:
+        type: "string"
       id:
         type: "string"
         xml:

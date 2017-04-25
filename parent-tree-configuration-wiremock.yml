@@ -1,0 +1,15 @@
+server:
+  adminMinThreads: 1
+  adminMaxThreads: 64
+  adminContextPath: /
+  applicationContextPath: /
+  applicationConnectors:
+    - type: http
+      port: 9107
+  adminConnectors:
+    - type: http
+      port: 9108
+swagger:
+  resourcePackage: com.ontotext.parenttree.resource
+sesameRepoURL: http://localhost:8080
+repoID: parent-tree

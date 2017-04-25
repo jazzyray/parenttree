@@ -14,7 +14,7 @@ import java.util.List;
 public class TreeNode {
 
     @XmlAttribute()
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonProperty("id")
     private String id;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
