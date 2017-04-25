@@ -1,5 +1,6 @@
 package com.ontotext.parenttree.service;
 
+import com.ontotext.parenttree.model.Node;
 import com.ontotext.parenttree.model.ParentTree;
 import com.ontotext.parenttree.model.Tree;
 import com.ontotext.parenttree.model.TreeNode;
@@ -65,20 +66,22 @@ public class ParentTreeServiceTest {
     @Test
     public void readParentTree() throws Exception {
         ParentTree parentTree = parentTreeService.getParentTree(concepts);
-        assertThat(parentTree.getTree().treeNode.id).isEqualTo(ID_ONE);
+        assertThat(parentTree.getTree().treeNode.getId()).isEqualTo(ID_ONE);
     }
 
     @Test
     public void findRootNode() {
         TreeNode rootTreeNode = parentTreeService.findRootTreeNode(model);
-        assertThat(rootTreeNode.id).isEqualTo(ID_ONE);
-        assertThat(rootTreeNode.prefLabelTree).isEqualTo("/" + PREF_LABEL_ONE);
+        assertThat(rootTreeNode.getId()).isEqualTo(ID_ONE);
+        assertThat(rootTreeNode.getPrefLabelTree()).isEqualTo("/" + PREF_LABEL_ONE);
     }
 
     @Test
     public void findChildren() {
         TreeNode rootTreeNode = parentTreeService.findRootTreeNode(model);
-        List<Tree> children = parentTreeService.getChildren(rootTreeNode,model);
+        List<Node> nodes = new ArrayList<Node>();
+        nodes.add(rootTreeNode.asNode());
+        List<Tree> children = parentTreeService.getChildren(rootTreeNode,model,nodes);
         assertThat(children.size()).isEqualTo(2);
     }
 

@@ -24,3 +24,8 @@ ontores:tsk9f4r0xn5c rdf:type skos:Concept ;
     skos:prefLabel "Wellhead design"@en ;
     skos:altLabel "well-head-design"@en ;
     skos:broader ontores:tsk9f4r0xn1c .
+
+ontores:tsk9f4r0xn6c rdf:type skos:Concept ;
+    skos:prefLabel "Wellbore design"@en ;
+    skos:altLabel "well-bore-design"@en ;
+    skos:broader ontores:tsk9f4r0xn4c .

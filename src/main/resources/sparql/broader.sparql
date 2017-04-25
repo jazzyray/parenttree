@@ -1,14 +1,14 @@
 PREFIX ontores: <http://ontology.ontotext.com/resource/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-construct {
-	?concept skos:altLabel ?altLabel ;
-        			     skos:prefLabel ?prefLabel ;
-        				 skos:broader ?immediateBroader .
-    ?transitiveBroader  skos:broader ?broader ;
-                        skos:altLabel ?broaderAltLabel ;
-                        skos:prefLabel ?broaderPrefLabel .
-    ?transitiveBroader  skos:broader ?transitiveBroaderBroader .
-} where {
+CONSTRUCT {
+	?concept                skos:altLabel   ?altLabel ;
+                            skos:prefLabel  ?prefLabel ;
+        				    skos:broader    ?immediateBroader .
+    ?transitiveBroader      skos:broader    ?broader ;
+                            skos:altLabel   ?broaderAltLabel ;
+                            skos:prefLabel  ?broaderPrefLabel .
+    ?transitiveBroader      skos:broader    ?transitiveBroaderBroader .
+} WHERE {
     OPTIONAL { ?concept skos:broader ?immediateBroader .}
     ?concept skos:altLabel ?altLabel ;
                          skos:prefLabel ?prefLabel .

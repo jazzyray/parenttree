@@ -1,5 +1,6 @@
 package com.ontotext.parenttree.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.xml.bind.annotation.*;
@@ -8,6 +9,7 @@ import java.util.List;
 /** **/
 @XmlType(propOrder={"treeNode", "children"})
 @XmlAccessorType(XmlAccessType.FIELD)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Tree {
 
     @XmlElement(name = "node", namespace = Namespace.DEFAULT_NAMESPACE)
@@ -30,5 +32,6 @@ public class Tree {
     public Tree() {
 
     }
+
 
 }

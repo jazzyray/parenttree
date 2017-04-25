@@ -1,6 +1,7 @@
 package com.ontotext.parenttree.service;
 
 import com.ontotext.parenttree.exception.ParentTreeException;
+import com.ontotext.parenttree.model.Node;
 import com.ontotext.parenttree.model.ParentTree;
 import com.ontotext.parenttree.model.Tree;
 import com.ontotext.parenttree.model.TreeNode;
@@ -30,10 +31,6 @@ public class ParentTreeService {
 
     ValueFactory valueFactory = SimpleValueFactory.getInstance();
 
-    public ParentTreeService() {
-
-    }
-
     public ParentTreeService(SesameRepo sesameRepo) {
         this.sesameRepo = sesameRepo;
     }
@@ -45,7 +42,12 @@ public class ParentTreeService {
         ParentTree parentTree = new ParentTree();
         TreeNode rootNode = findRootTreeNode(parentTreeModel);
         Tree rootTree = new Tree(rootNode);
-        rootTree.children = getChildren(rootNode,parentTreeModel);
+
+        List<Node> nodes = new ArrayList<Node>();
+        parentTree.setNodes(nodes);
+        nodes.add(rootNode.asNode());
+
+        rootTree.children = getChildren(rootNode,parentTreeModel,nodes);
         parentTree.setTree(rootTree);
 
         return parentTree;
@@ -68,32 +70,33 @@ public class ParentTreeService {
             throw new ParentTreeException("No root");
         } else {
             TreeNode treeNode = new TreeNode();
-            treeNode.id = root.subjects().iterator().next().toString();
-            Model rootPrefLabel = model.filter(valueFactory.createIRI(treeNode.id), SKOS.PREF_LABEL, null );
+            treeNode.setId(root.subjects().iterator().next().toString());
+            Model rootPrefLabel = model.filter(valueFactory.createIRI(treeNode.getId()), SKOS.PREF_LABEL, null );
             String prefLabel = rootPrefLabel.objects().iterator().next().stringValue();
-            treeNode.prefLabelTree = "/" + prefLabel;
-            treeNode.prefLabel = prefLabel;
-            treeNode.altLabel = getAltLabels(treeNode.id, model);
+            treeNode.setPrefLabelTree("/" + prefLabel);
+            treeNode.setPrefLabel(prefLabel);
+            treeNode.setAltLabel(getAltLabels(treeNode.getId(), model));
             return treeNode;
         }
     }
 
-    public List<Tree> getChildren(TreeNode treeNode, Model model) {
+    public List<Tree> getChildren(TreeNode treeNode, Model model, List<Node> nodes) {
         List<Tree> children = new ArrayList<Tree>();
-        for (Resource child: model.filter(null, SKOS.BROADER, valueFactory.createIRI(treeNode.id)).subjects()) {
+        for (Resource child: model.filter(null, SKOS.BROADER, valueFactory.createIRI(treeNode.getId())).subjects()) {
                 Optional<IRI> childId = Models.subjectIRI(model.filter(child, SKOS.PREF_LABEL, null));
                 if (childId.isPresent()) {
                     TreeNode childTreeNode = new TreeNode();
-                    childTreeNode.id = childId.get().stringValue();
+                    childTreeNode.setId(childId.get().stringValue());
                     Optional<Literal> childPrefLabel = Models.objectLiteral(model.filter(child, SKOS.PREF_LABEL, null));
                     if (childPrefLabel.isPresent()) {
-                        childTreeNode.prefLabelTree = treeNode.prefLabelTree + "/" + childPrefLabel.get().stringValue();
+                        childTreeNode.setPrefLabelTree(treeNode.getPrefLabelTree() + "/" + childPrefLabel.get().stringValue());
                     }
-                    childTreeNode.prefLabel = treeNode.prefLabelTree;
-                    childTreeNode.altLabel = getAltLabels(childTreeNode.id, model);
+                    childTreeNode.setPrefLabel(treeNode.getPrefLabelTree());
+                    childTreeNode.setAltLabel(getAltLabels(childTreeNode.getId(), model));
                     Tree childTree = new Tree(childTreeNode);
                     children.add(childTree);
-                    childTree.children = getChildren(childTreeNode, model);
+                    childTree.children = getChildren(childTreeNode, model, nodes);
+                    nodes.add(childTreeNode.asNode());
                 }
         }
         return children;
