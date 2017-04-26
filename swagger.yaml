@@ -77,10 +77,18 @@ definitions:
           attribute: true
       altLabels:
         type: "array"
+        xml:
+          name: "altLabel"
+          namespace: "http://www.ontotext.com/parenttree/"
+          wrapped: true
         items:
           type: "string"
       prefLabelTrees:
         type: "array"
+        xml:
+          name: "prefLabelTree"
+          namespace: "http://www.ontotext.com/parenttree/"
+          wrapped: true
         items:
           type: "string"
   ParentTree:
@@ -123,6 +131,9 @@ definitions:
           type: "string"
       altLabel:
         type: "array"
+        xml:
+          name: "altLabels"
+          wrapped: true
         items:
           type: "string"
       prefLabel:
